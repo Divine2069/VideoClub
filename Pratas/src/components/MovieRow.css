@@ -1,0 +1,57 @@
+.movieRow{
+    margin-bottom: 30px;
+
+}
+
+h2 {
+    margin: 0px 0px 0px 100px;
+}
+
+.movieRow--listarea{
+    overflow-x: hidden; /*tudo o que passar na horizontal vai ser cortado*/
+    padding-left: 30px; /* dar espaço na margem esquerda*/
+}
+
+.movieRow--list{
+    width: 999999999px;
+}
+
+.movieRow--item {
+    display: inline-block;
+    width: 150px;
+    cursor: pointer;  /*quando passa por cima muda o ponteiro*/
+}
+
+.movieRow--item img {
+    width: 100%; /*150px como dito acima*/
+    transform: scale(0.9); /* em x de usar os 100% usa apenas 90, para que tenha margem entre imagens*/
+    transition: all ease 0.2s; /*tempo que demora a fazer os efeitos tipo a transformação*/
+}
+
+.movieRow--item img:hover {  /*quando o mouse passa por cima da imagem, volta a transformar para os 100% (150px)*/
+    transform: scale(1);
+}
+
+.movieRow--right,
+.movieRow--left{
+    position: absolute;
+    width: 40px;
+    height: 225px;
+    background-color: rgba(0,0,0,0.6);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    opacity: 0;
+    transition: all ease 0.5s;
+}
+.movieRow--left{
+    left: 0;
+}
+.movieRow--right{
+    right: 0;
+}
+.movieRow:hover .movieRow--left,
+.movieRow:hover .movieRow--right{
+    opacity:1;
+}

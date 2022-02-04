@@ -1,0 +1,16 @@
+@import url('https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap'); /*importar font permanent marker*/
+
+*{
+  box-sizing: border-box;
+}
+
+body{
+  background-color: #111;
+  color: #FFF;
+  margin: 0;
+font-family: 'Permanent Marker', sans-serif;
+}
+
+.lists{
+  margin-top: -150px;
+}

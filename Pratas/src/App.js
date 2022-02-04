@@ -1,0 +1,73 @@
+import React, {useEffect, useState} from 'react' // useeffect quando a tela é carregada, ela executa a função - useState grava
+import './App.css'
+import Tmdb from './Tmdb'
+import MovieRow from './components/MovieRow'
+import FeaturedMovie from './components/FeaturedMovie'
+import Header from './components/Header'
+
+export default () => {
+
+  const [movieList, setMovieList] = useState([])
+  const [featuredData , setFeaturedData] = useState(null)
+  const [blackHeader , setBlackHeader] = useState(false)   /* começa a falso, e quando o scroll anda 12 em Y, passa a verdadeiro, preenchendo o background */
+
+  useEffect(()=> {
+    const loadAll = async () => {
+      // Para buscar a lista de filmes TOTAL
+      let list = await Tmdb.getHomeList()
+      setMovieList(list)
+
+      // Buscar o Featured / filme em destaque
+      let originals = list.filter(i=>i.slug ==='originals')
+      let randomChosen = Math.floor(Math.random()*(originals[0].items.results.length -1 ))
+      let chosen = originals[0].items.results[randomChosen]
+      let chosenInfo = await Tmdb.getMovieInfo(chosen.id,'tv')
+      setFeaturedData(chosenInfo)
+      
+    }
+
+    loadAll()
+  }, [])
+
+
+  useEffect (()=> {               
+    const scrollListener = () => {    /* começa a falso, e quando o scroll anda 12 em Y, passa a verdadeiro, preenchendo o background */
+        if(window.scrollY >12){
+          setBlackHeader (true)
+         
+        }else setBlackHeader (false)
+    }
+    window.addEventListener('scroll',scrollListener);
+    return () => {
+      window.removeEventListener('scroll',scrollListener)
+    }
+    
+  }, [])
+  
+
+
+  return(
+    <div className="page">
+
+      <Header black={blackHeader} />
+
+
+      {featuredData && 
+        <FeaturedMovie item={featuredData}/> // não é loop nao precisa de key
+        }
+
+
+      <section className="lists">
+        {movieList.map((item, key)=> (
+         <MovieRow key={key} title={item.title} items={item.items} />
+        ))}
+      </section>
+      <footer><center>
+        Trabalho concluído por:<br />
+        1SAR ETA Ferreira Pereira<br />
+        1SAR ETA Nogueira Pratas<br />
+        1SAR ETA Faria Ribeiro</center>
+      </footer>
+    </div>
+  )
+}
