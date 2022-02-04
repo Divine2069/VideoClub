@@ -1,0 +1,16 @@
+npm init --cria package .json (tudo enter)
+
+npm install eslint --install modulo eslint
+
+npm init @eslint/config -- check syntax and ..problems/common js/none/no/browser and .../
+
+npm install node-fetch
+
+npm install express
+
+npm install hbs
+
+
+
+
+
