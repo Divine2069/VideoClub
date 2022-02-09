@@ -1,0 +1,52 @@
+<link rel="StyleSheet" type="text/css" href="/MoviePage.css" media="screen">
+
+<h2> {{Title_Name}}</h2>
+
+<br>
+
+<div>
+    <table class="tabela_capa_trailer">
+        <tr>
+            <td>
+                <img width="270" height="370" src="{{Img_Anime}}" frameborder="1" id="jpeg">
+                <h id="Cover"></h>
+            </td>
+            <td>
+                <iframe width="560" height="315" src="{{Link_Trailer}}" title="YouTube video player" frameborder="0"
+                    allow="accelerometer; 
+                autoplay; clipboard-write; encrypted-media; gyroscope; 
+                picture-in-picture" allowfullscreen>
+                </iframe>
+            </td>
+        </tr>
+    </table>
+</div>
+
+<br>
+<div>
+    <h2>Summary:</h2>
+    <br>
+    {{Summary}}
+</div>
+
+<br>
+<div>
+    <h4>Details:</h4>
+    <br>
+    <div>
+        <h6>Language:</h6>{{Language}}
+    </div>
+    <br>
+    <div>
+        <h6>Released_Date:</h6>{{Released_Date}}
+    </div>
+    <br>
+    <div>
+        <h6>Rating IMDB:</h6>{{Rating}}
+    </div>
+    <br>
+    <div>
+        <h6>Time:</h6>{{Time}}
+    </div>
+</div>
+<br><br><br><br>

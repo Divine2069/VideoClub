@@ -1,4 +1,7 @@
-<h2> Movies:</h2>
+ <link rel="StyleSheet" type="text/css" href="/MoviePage.css" media="screen" >
+
+<h2> Movies Search:</h2>
+
 <form method="get">
     <div class="row">
         <div class="form-group col-sm-4">
@@ -10,33 +13,26 @@
     </div>
 </form>
 
-
+ 
 <table class="table table-bordered">
     <thead>
         <tr>
-            <th>Id</th>
+            <th>Cover</th>
             <th>Name</th>
-            <th>Language</th>
             <th>Released Date</th>
             <th>Rating</th>
             <th>Lenght</th>
-            <th>Summary</th>
+            
         </tr>
     </thead>
     <tbody>
         {{#each arrayFilmes}}
-        <tr>
+        </h><tr>
             <td>
-                <img src='1.jpg'>
+                <img src="{{Img_Filme}}" width="150" height="250" id="jpeg"><h id="Cover"></h>
             </td>
             <td>
-                {{Id_Filme}}
-            </td>
-            <td>
-                {{Title_Name}}
-            </td>
-            <td>
-                {{Language}}
+               <h3><center><a href={{path}}>{{Title_Name}}</a></center></h3>
             </td>
             <td>
                 {{Released_Date}}
@@ -46,9 +42,6 @@
             </td>
             <td>
                 {{Time}}
-            </td>
-            <td>
-                {{Summary}}
             </td>
         </tr>
         {{/each}}

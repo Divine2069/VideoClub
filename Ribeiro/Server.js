@@ -13,8 +13,6 @@ app.use(express.static('public')) // direct access to all files from public dir
 app.use('/api', webApiRouter)
 app.use(webAppRouter)
 
-console.log('select * from Filmes where Title_Name LIKE \'%name%\'')
-
 app.listen(3000, () => {
     console.log('Listening in port 3000')
 })
