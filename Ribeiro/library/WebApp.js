@@ -115,7 +115,7 @@ function getAnimeByTitle(req, res) {
         db.getAnimeByTitle(req.query.animeName).then(resultAnimes => {
             resultAnimes.forEach(anime => {
                 anime.path = `/anime/info/${anime.Id_Anime}`
-                anime.Img_Anime = `/Covers/Anime/${anime.Title_Name}_cover.jpeg`
+                anime.Img_Anime = `/Covers/Anime/${anime.Cover}`
                 anime.Released_Date =  `${anime.Released_Date.getMonth()}/${anime.Released_Date.getFullYear()}`
             }
             )
@@ -128,7 +128,7 @@ function getAnimeByTitle(req, res) {
 
 function getAnimePage(req, res) {
     db.getAnimePage(req.params.Id_Anime).then(resultAnime => {
-        resultAnime.Img_Anime = `/Covers/Anime/${resultAnime.Title_Name}_cover.jpeg`
+        resultAnime.Img_Anime = `/Covers/Anime/${resultAnime.Cover}`
         res.render('animeDescription', resultAnime)
     })
 }
