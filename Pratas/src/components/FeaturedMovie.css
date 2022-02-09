@@ -55,7 +55,8 @@
 
     }
     .featured--watchbutton,
-    .featured--mylistbutton{
+    .featured--mylistbutton,
+    .featured--bdadospage{
         display: inline-block;
         font-size: 20px;
         font-weight: bold;
@@ -67,20 +68,48 @@
         transition: all ease 0.2s;
     }
     .featured--watchbutton:hover,
-    .featured--mylistbutton:hover{
+    .featured--mylistbutton:hover,
+    .featured--bdadospage:hover{
     opacity: 0.7;
     }
     .featured--watchbutton{
         background-color:royalblue;
         color: navy;
     }
-    .featured--mylistbutton{
+    .featured--mylistbutton,
+    .featured--bdadospage,
+    .featured--bdadospage:hover{
         background-color: #333;
         color:darkgoldenrod;
         
     }
+    
     .featured--genres{
         margin-top: 15px;
         font-size: 18px;
         color: #999;
+    }
+
+    @media (max-width: 760px){
+        .featured {
+            height: 90vh;
+        }
+        .featured--name{
+            font-size: 40px;
+        }
+        .featured--info{
+            font-size: 16px;
+        }
+        .featured--description{
+            font-size: 14px;
+            max-width: 100%;
+            margin-right: 30px;
+        }
+        .featured--watchbutton,
+        .featured--mylistbutton{
+            font-size:  16px;
+        }
+        .featured--genres {
+            font-size: 14px;
+        }
     }

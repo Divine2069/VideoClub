@@ -42,27 +42,27 @@ export default {
             {
                 slug: 'action',
                 title: 'Acção',
-                items: await basicFetch(`/discover/movie?with_genres=28?language=pt-pt&api_key=${API_KEY}`) 
+                items: await basicFetch(`/discover/movie?api_key=${API_KEY}&with_genres=28&language=pt-pt`,) 
             },
             {
                 slug: 'comedy',
                 title: 'Comédia',
-                items: await basicFetch(`/discover/movie?with_genres=35?language=pt-pt&api_key=${API_KEY}`) 
+                items: await basicFetch(`/discover/movie?api_key=${API_KEY}&with_genres=35&language=pt-pt`) 
             },
             {
                 slug: 'horror',
                 title: 'Terror',
-                items: await basicFetch(`/discover/movie?with_genres=27?language=pt-pt&api_key=${API_KEY}`) 
+                items: await basicFetch(`/discover/movie?api_key=${API_KEY}&with_genres=27&language=pt-pt`) 
             },
             {
                 slug: 'Romance',
                 title: 'Romance',
-                items: await basicFetch(`/discover/movie?with_genres=10749?language=pt-pt&api_key=${API_KEY}`) 
+                items: await basicFetch(`/discover/movie?api_key=${API_KEY}&with_genres=10749&language=pt-pt`) 
             },
             {
                 slug: 'documentary',
                 title: 'Documentários',
-                items: await basicFetch(`/discover/movie?with_genres=99?language=pt-pt&api_key=${API_KEY}`) 
+                items: await basicFetch(`/discover/movie?api_key=${API_KEY}&with_genres=99&language=pt-pt`) 
             }
         ]
     },
