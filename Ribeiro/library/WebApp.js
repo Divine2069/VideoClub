@@ -41,8 +41,8 @@ function getMovieByTitle(req, res) {
         db.getMovieByTitle(req.query.movieName).then(resultFilmes => {
             resultFilmes.forEach(filme => {
                 filme.path = `/movies/info/${filme.Id_Filme}`,
-                    filme.Img_Filme = `/Covers/Filmes/${filme.Title_Name}_cover.jpeg`,
-                    filme.Released_Date =  `${filme.Released_Date.getMonth()}/${filme.Released_Date.getFullYear()}`
+                filme.Img_Filme = `/Covers/Filmes/${filme.Title_Name}_cover.jpeg`,
+                filme.Released_Date =  `${filme.Released_Date.getMonth()}/${filme.Released_Date.getFullYear()}`
             }
             )
             res.render('movies', { 'arrayFilmes': resultFilmes })
@@ -132,6 +132,23 @@ function getAnimePage(req, res) {
         res.render('animeDescription', resultAnime)
     })
 }
+
+// var sql ="SELECT rname,image FROM recipes WHERE ringre LIKE '%" +items[0]+"%' ";
+//     for( var i=1;i<items.length;i++){
+//         sql = sql + "AND ringre LIKE '%"+items[+i]+"%' ";
+//     }
+
+//     console.log(sql);
+
+//     con.query(sql, function(err,result){
+//         if(err){
+//             throw err;
+//         }else{
+//             res.render("recipes_response", { data: result[0].image.toString('base64'), rname: result[0].rname});
+//         }
+//     });
+
+
 
 
 
