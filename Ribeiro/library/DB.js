@@ -124,7 +124,7 @@ async function getAnimePage(animeId) {
 
 
 
-
-
-module.exports ={getMovieByTitle,getMoviePage, getSerieByTitle, getSeriePage, 
-    getDocumentaryByTitle, getDocumentaryPage, getAnimeByTitle, getAnimePage}
+module.exports = {
+    getMovieByTitle, getMoviePage, getSerieByTitle, getSeriePage,
+    getDocumentaryByTitle, getDocumentaryPage, getAnimeByTitle, getAnimePage,
+}

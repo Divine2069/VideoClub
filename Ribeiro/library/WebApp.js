@@ -127,26 +127,17 @@ function getAnimeByTitle(req, res) {
 }
 
 function getAnimePage(req, res) {
+    db.getCover(req.params.Cover).then(resultCover => {
+        resultCover.ImgCover = `/Covers/Anime/${resultAnime.Cover}`
+    })
+
     db.getAnimePage(req.params.Id_Anime).then(resultAnime => {
         resultAnime.Img_Anime = `/Covers/Anime/${resultAnime.Cover}`
         res.render('animeDescription', resultAnime)
     })
 }
 
-// var sql ="SELECT rname,image FROM recipes WHERE ringre LIKE '%" +items[0]+"%' ";
-//     for( var i=1;i<items.length;i++){
-//         sql = sql + "AND ringre LIKE '%"+items[+i]+"%' ";
-//     }
 
-//     console.log(sql);
-
-//     con.query(sql, function(err,result){
-//         if(err){
-//             throw err;
-//         }else{
-//             res.render("recipes_response", { data: result[0].image.toString('base64'), rname: result[0].rname});
-//         }
-//     });
 
 
 
