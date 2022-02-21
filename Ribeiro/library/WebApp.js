@@ -3,12 +3,14 @@
 const express = require('express')
 const router = express.Router()
 const db = require('./DB')
+const auth = require('./auth')
 const fs = require('fs')
 const fetch = require('node-fetch')
 const url = 'http://api.football-api.com/2.0/competitions?Authorization=565ec012251f932ea4000001fa542ae9d994470e73fdb314a8a56d76'
 
 //##########################################################################
 //ROUTES--------------------------------------------------------
+router.use(checkLocals)
 router.get('/', index)
 router.get('/movies', getMovieByTitle)
 router.get('/movies/info/:Id_Filme', getMoviePage)
@@ -19,20 +21,87 @@ router.get('/documentary/info/:Id_Documentary', getDocumentaryPage)
 router.get('/anime', getAnimeByTitle)
 router.get('/anime/info/:Id_Anime', getAnimePage)
 
+router.get('/signup', getSignup)
+router.put('/signup', signup)
+router.get('/login', getLogin)
+router.post('/login', login)
+router.post('/logout', logout)
+
+router.use('/students', checkAutentication)
+
 
 //##########################################################################
 //FUNCOES--------------------------------------------------------
+function checkAutentication(req, res, next) {
+    if (!req.user) {
+        res.redirect('/login')
+    }
+    next()
+}
+
+function checkLocals(req, res, next) {
+    if (req.user) {
+        res.locals.user = req.user
+        // db.checkIfAdmin().then(res => {
+        //     if (res)
+        //     res.locals.user.admin = true
+        // })
+    }
+    next()
+}
+
+function logout(req, res) {
+    req.logout()
+    res.send('<script>alert("Logged out with success..."); window.location.href = "/"; </script>')
+}
+
+function getSignup(req, res) {
+    res.render('signup')
+}
+
+function signup(req, res, next) {
+    //Encrypt
+    const encryptData = auth.encryptPassword(req.body.password)
+    db.insertUser(req.body.username, encryptData)
+        .then((user) => {
+            if (user.status == 409)
+                res.status(409).end()
+            else {
+                res.status(201).end()
+            }
+        })
+}
+
+function getLogin(req, res) {
+    res.render('login')
+}
+
+function login(req, res) {
+    db.getUser(req.body.username).then((user) => {
+        if(user){
+            const decryptedPassword = auth.decryptPassword(user.password, user.initVector, user.securityKey)
+            if (decryptedPassword != req.body.password) {
+                res.status(401)
+                res.end()
+            }
+            else {
+                req.logIn(user, (err) => {
+                    res.status(201).end()
+                })
+            }
+        }
+        else{
+            res.status(401)
+            res.end()
+        }
+    })
+}
+
+
 //FUNCAO QUE VAI BUSCAR O NOSSO BODY GERAL EM INDEX.HBS
 function index(req, res) {
     res.render('index')
 }
-
-//ESTA funcao oculta JÁ NÃO É NECESSARIA
-// function getMoviesDB(req, res) {
-//     db.getAllMovies().then(resultFilmes => {
-//         res.render('movies', { 'arrayFilmes': resultFilmes })
-//     })
-// }
 
 
 //PERMITE A BUSCA DO FILME NA DB PELO NAME TITLE

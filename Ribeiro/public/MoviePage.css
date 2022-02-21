@@ -1,11 +1,58 @@
 @import url('https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300|Oswald|Roboto&display=swap');
 
 
-
-
-.tabela_capa_trailer {
-  vertical-align: baseline;
-  padding: 14px 16px;
-  margin-left: 20px;
+.main {
+  width: 100%;
+  margin-top: -100px;
+  background-size: cover;
+  align-items: center;
+  overflow-x: hidden;
+  justify-content: center;
+  display: flex;
+  background-position: center;
+  min-height: 710px;
+  background-image: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)),
+    url(https://assets.nflxext.com/ffe/siteui/vlv3/a1dc92ca-091d-4ca9-a05b-8cd44bbfce6a/f9368347-e982-4856-a5a4-396796381f28/RS-en-20191230-popsignuptwoweeks-perspective_alpha_website_large.jpg);
 }
 
+.area {
+  color: white;
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  margin-top: 70px;
+}
+
+.logo {
+  
+  float: left;
+
+}
+
+
+.moviesearch {
+  text-align: left;
+}
+
+
+.column1 {
+  
+  float: left;
+  width: 40.33%;
+  padding: 2px;
+}
+.column2 {
+  float: right;
+  width: 45.33%;
+  padding: 2px;
+  
+}
+
+/* Clear floats after image containers */
+.row::after {
+  content: "";
+  clear: both;
+  display:inline-block;
+}

@@ -1,6 +1,10 @@
- <link rel="StyleSheet" type="text/css" href="/MoviePage.css" media="screen" >
+<link rel="StyleSheet" type="text/css" href="/MoviePage.css" media="screen">
+<script type="text/javascript" src="/UtilsDB.js"></script>
 
-<h2> Movies Search:</h2>
+<br>
+<div class="moviesearch">
+    <h2> Movies Search:</h2>
+</div>
 
 <form method="get">
     <div class="row">
@@ -13,7 +17,7 @@
     </div>
 </form>
 
- 
+
 <table class="table table-bordered">
     <thead>
         <tr>
@@ -22,17 +26,21 @@
             <th>Released Date</th>
             <th>Rating</th>
             <th>Lenght</th>
-            
+
         </tr>
     </thead>
     <tbody>
         {{#each arrayFilmes}}
-        </h><tr>
+        </h>
+        <tr>
             <td>
-                <img src="{{Img_Filme}}" width="150" height="250" id="jpeg"><h id="Cover"></h>
+                <img src="{{Img_Filme}}" width="150" height="250" id="jpeg">
+                <h id="Cover"></h>
             </td>
             <td>
-               <h3><center><a href={{path}}>{{Title_Name}}</a></center></h3>
+                <h3>
+                    <center><a href={{path}}>{{Title_Name}}</a></center>
+                </h3>
             </td>
             <td>
                 {{Released_Date}}
